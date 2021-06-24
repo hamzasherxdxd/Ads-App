@@ -1,0 +1,42 @@
+{% extends "base_bootstrap.html" %}
+{% block navbar %}
+{% load custom_tags %}
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">Ads</a>
+    </div>
+    <!-- https://stackoverflow.com/questions/22047251/django-dynamically-get-view-url-and-check-if-its-the-current-page -->
+    <ul class="nav navbar-nav">
+      {% url 'ads' as ads %}
+      <li {% if request.get_full_path == ads %}class="active"{% endif %}>
+          <a href="{% url 'ads:list' %}">Ads</a></li>
+          <li {% if request.get_full_path == ads %}class="active"{% endif %}>
+              <a href="{% url 'ads:favorites' %}">Favorites</a>
+          </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        {% if user.is_authenticated %}
+        <li>
+        <a href="{% url 'ads:create' %}">Create Ad</a>
+        </li>
+        <li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <img style="width: 25px;" src="{{ user|gravatar:60 }}"/>  {{ user }}<b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'logout' %}?next={% url 'ads:list' %}">Logout</a></li>
+            </ul>
+        </li>
+        {% else %}
+        <li>
+        <a href="{% url 'login' %}?next={% url 'ads:list' %}">Login</a>
+        </li>
+        <li>
+            <a href="{% url 'ads:signup'%}">Sign Up</a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</nav>
+{% endblock %}
