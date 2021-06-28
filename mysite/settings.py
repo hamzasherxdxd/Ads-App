@@ -151,15 +151,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-# PROJECT_ROOT = os.path.join(os.path.dirname(__file__))
-# STATIC_ROOT = [
-#     (os.path.join(PROJECT_ROOT, 'staticfiles'))
-# ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+PROJECT_ROOT = os.path.join(os.path.dirname(__file__))
+STATIC_ROOT = [
+    (os.path.join(PROJECT_ROOT, 'staticfiles'))
+]
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = '/static/'
 
 # STATICFILES_DIRS = [(os.path.join(PROJECT_ROOT, 'static')),]
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Add the settings below
 
 REST_FRAMEWORK = {
