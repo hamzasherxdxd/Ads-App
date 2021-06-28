@@ -16,6 +16,6 @@ urlpatterns = [
     path('favorites/', Favorites.as_view(), name='favorites'),
     path('<int:pk>/favorite', AddFavoriteView.as_view(), name='favorite'),
     path('<int:pk>/unfavorite', DeleteFavoriteView.as_view(), name='unfavorite'),
-    path('<slug:tag>',Tag.as_view(), name='tag_list'),
+    path('tags/<slug:tag>',Tag.as_view(), name='tag_list'),
     path('signup/', SignUpView.as_view(), name='signup'),
 ]
