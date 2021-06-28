@@ -27,7 +27,8 @@ SECRET_KEY = 'g$iqqu&*mw4_sg3(#ld0sqaalxebel&168^yj%i&sgrw(fmn@w'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['adsdjangoapp.herokuapp.com']
+# ALLOWED_HOSTS = ['adsdjangoapp.heroku.com']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -95,12 +96,23 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ads_db',
+        'USER': 'hamzasherxdxd',
+        'PASSWORD': 'hamzasherkhan123',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation
@@ -139,12 +151,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# PROJECT_ROOT = os.path.join(os.path.dirname(__file__))
+# STATIC_ROOT = [
+#     (os.path.join(PROJECT_ROOT, 'staticfiles'))
+# ]
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(PROJECT_ROOT, 'static'))
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_DIRS = [(os.path.join(PROJECT_ROOT, 'static')),]
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Add the settings below
 
 REST_FRAMEWORK = {
